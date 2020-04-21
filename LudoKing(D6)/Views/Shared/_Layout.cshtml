@@ -6,8 +6,6 @@
     <title>@ViewData["Title"] - LudoKing_D6_</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-
-
 </head>
 <body>
     <header>
@@ -34,6 +32,11 @@
             </div>
         </nav>
     </header>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/@@microsoft/signalr/dist/browser/signalr.min.js"></script>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -45,9 +48,6 @@
             &copy; 2020 - LudoKing_D6_ - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

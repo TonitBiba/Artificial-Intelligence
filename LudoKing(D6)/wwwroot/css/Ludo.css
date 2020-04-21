@@ -72,3 +72,78 @@ td {
     .noBorder td {
         border: 0px;
     }
+
+.stic {
+    color: white;
+    margin: 8px 0 0 5px;
+}
+
+
+.Dice {
+    background: #fff;
+    margin: 25px auto;
+    border-radius: 8px;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    width: 80px;
+    height: 80px;
+    justify-content: space-around;
+    border: 2px solid black;
+}
+
+.Dice span {
+    flex: 0 0 9px;
+    height: 9px;
+    border-radius: 100%;
+    margin: 9px 8px;
+    background: #fff;
+}
+
+.Dice[data-count="6"] span:first-child,
+.Dice[data-count="6"] span:nth-child(3),
+.Dice[data-count="6"] span:nth-child(4),
+.Dice[data-count="6"] span:nth-child(6),
+.Dice[data-count="6"] span:nth-child(7),
+.Dice[data-count="6"] span:nth-child(9) {
+    background: #383838;
+    box-shadow: inset 1px 2px 0px 0px;
+}
+
+.Dice[data-count="5"] span:first-child,
+.Dice[data-count="5"] span:nth-child(3),
+.Dice[data-count="5"] span:nth-child(5),
+.Dice[data-count="5"] span:nth-child(7),
+.Dice[data-count="5"] span:nth-child(9) {
+    background: #383838;
+    box-shadow: inset 1px 2px 0px 0px;
+}
+
+.Dice[data-count="4"] span:first-child,
+.Dice[data-count="4"] span:nth-child(3),
+.Dice[data-count="4"] span:nth-child(7),
+.Dice[data-count="4"] span:nth-child(9) {
+    background: #383838;
+    box-shadow: inset 1px 2px 0px 0px;
+}
+
+.Dice[data-count="3"] span:first-child,
+.Dice[data-count="3"] span:nth-child(5),
+.Dice[data-count="3"] span:nth-child(9) {
+    background: #383838;
+    box-shadow: inset 1px 2px 0px 0px;
+}
+
+
+.Dice[data-count="2"] span:nth-child(4),
+.Dice[data-count="2"] span:nth-child(6) {
+    background: #383838;
+    box-shadow: inset 1px 2px 0px 0px;
+}
+
+
+.Dice[data-count="1"] span:nth-child(5) {
+    background: #383838;
+    transform: scale(1.4);
+    box-shadow: inset 1px 2px 0px 0px;
+}

@@ -4,207 +4,283 @@
 }
 
 <h1>MiniMax implemented in solving Ludo King between two players</h1>
-
+<link href="~/lib/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet" />
 <link href="~/css/Ludo.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-md-6">
+        <table>
+            <tr>
+                <td rowspan="6" colspan="6">
+                    <div style="border: 32px solid red;width: 100%;height: 100%">
+                        <table class="noBorder">
+                            <tr>
+                                <td>
+                                    <div class="Red-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Red-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="Red-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Red-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td></td>
+                <td>
+                    <i class="fas fa-arrow-down" style="margin-left: 8px; color:green"></i>
+                </td>
+                <td></td>
+                <td rowspan="6" colspan="6">
+                    <div style="border:32px solid green; width:100%; height:100%">
+                        <table class="noBorder">
+                            <tr>
+                                <td>
+                                    <div class="Green-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Green-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="Green-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Green-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="Green"></td>
+                <td class="Green"></td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="far fa-star fa-lg" style="margin-left: 3px;"></i>
+                </td>
+                <td class="Green"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="Green"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="Green"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="Green"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="Red"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="3" colspan="3" style="background-color: red; background-image: -webkit-linear-gradient(45deg, dodgerblue 50%, green 50%);"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <i class="far fa-star fa-lg" style="margin-left: 3px;"></i>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="fas fa-arrow-right" style="margin-left: 8px; color:red"></i>
+                </td>
+                <td class="Red"></td>
+                <td class="Red"></td>
+                <td class="Red"></td>
+                <td class="Red"></td>
+                <td class="Red"></td>
+                <td class="Yellow"></td>
+                <td class="Yellow"></td>
+                <td class="Yellow"></td>
+                <td class="Yellow"></td>
+                <td class="Yellow"></td>
+                <td>
+                    <i class="fas fa-arrow-left" style="margin-left: 8px; color:#ffbf00"></i>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <i class="far fa-star fa-lg" style="margin-left: 3px;"></i>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="Yellow"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td rowspan="6" colspan="6">
+                    <div style="border:32px solid dodgerblue; width:100%; height:100%">
+                        <table class="noBorder">
+                            <tr>
+                                <td>
+                                    <div class="Blue-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Blue-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="Blue-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Blue-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td></td>
+                <td class="Blue"></td>
+                <td></td>
+                <td rowspan="6" colspan="6">
+                    <div style="border:32px solid #ffbf00; width:100%; height:100%">
+                        <table class="noBorder">
+                            <tr>
+                                <td>
+                                    <div class="Yellow-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Yellow-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="Yellow-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Yellow-Items">
+                                        <i class="far fa-circle fa-lg stic"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="Blue"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="Blue"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="Blue"></td>
+                <td>
+                    <i class="far fa-star fa-lg" style="margin-left: 3px;"></i>
+                </td>
+            </tr>
+            <tr>
+                <td class="Blue"></td>
+                <td class="Blue"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <i class="fas fa-arrow-up" style="margin-left: 8px; color:dodgerblue"></i>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <div class="Dice" data-count="6">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var connection = new signalR.HubConnectionBuilder().withUrl("/ludoHub").build();
 
-<table>
-    <tr>
-        <td rowspan="6" colspan="6">
-            <div style="border: 32px solid red;width: 100%;height: 100%">
-                <table class="noBorder">
-                    <tr>
-                        <td>
-                            <div class="Red-Items" />
-                        </td>
-                        <td>
-                            <div class="Red-Items" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="Red-Items" />
-                        </td>
-                        <td>
-                            <div class="Red-Items" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-        <td></td>
-        <td>Arrow</td>
-        <td></td>
-        <td rowspan="6" colspan="6">
-            <div style="border:32px solid green; width:100%; height:100%">
-                <table class="noBorder">
-                    <tr>
-                        <td>
-                            <div class="Green-Items" />
-                        </td>
-                        <td>
-                            <div class="Green-Items" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="Green-Items" />
-                        </td>
-                        <td>
-                            <div class="Green-Items" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td class="Green"></td>
-        <td class="Green"></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td class="Green"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td class="Green"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td class="Green"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td class="Green"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td class="Red"></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td class="Red"></td>
-        <td class="Red"></td>
-        <td class="Red"></td>
-        <td class="Red"></td>
-        <td class="Red"></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="Yellow"></td>
-        <td class="Yellow"></td>
-        <td class="Yellow"></td>
-        <td class="Yellow"></td>
-        <td class="Yellow"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="Yellow"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td rowspan="6" colspan="6">
-            <div style="border:32px solid dodgerblue; width:100%; height:100%">
-                <table class="noBorder">
-                    <tr>
-                        <td>
-                            <div class="Blue-Items" />
-                        </td>
-                        <td>
-                            <div class="Blue-Items" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="Blue-Items" />
-                        </td>
-                        <td>
-                            <div class="Blue-Items" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-        <td></td>
-        <td class="Blue"></td>
-        <td></td>
-        <td rowspan="6" colspan="6">
-            <div style="border:32px solid #ffbf00; width:100%; height:100%">
-                <table class="noBorder">
-                    <tr>
-                        <td>
-                            <div class="Yellow-Items" />
-                        </td>
-                        <td>
-                            <div class="Yellow-Items" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="Yellow-Items" />
-                        </td>
-                        <td>
-                            <div class="Yellow-Items" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td class="Blue"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td class="Blue"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td class="Blue"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td class="Blue"></td>
-        <td class="Blue"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
+        connection.on("ReceiveMessage", function (user, message) {
+            debugger
+        });
+
+        connection.start().then(function () {
+
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        $('.Dice').click(function () { 
+            $.post('@Url.Action("Test")');
+            $(this).attr('data-count', 1)
+        })
+    })
+</script>
