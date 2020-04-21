@@ -1,0 +1,74 @@
+﻿table, tr, td {
+    border: 1px solid black;
+}
+
+td {
+    width: 32px;
+    height: 32px;
+}
+
+.Red {
+    background-color: red;
+}
+
+.Green {
+    background-color: green;
+}
+
+.Blue {
+    background-color: dodgerblue;
+}
+
+.Yellow {
+    background-color: #ffbf00;
+}
+
+.Yellow-Items {
+    border-radius: 28px;
+    background-color: #ffbf00;
+    width: 32px;
+    height: 32px;
+    border: 0px;
+    margin-left: 14px;
+}
+
+.Red-Items {
+    border-radius: 28px;
+    background-color: red;
+    width: 32px;
+    height: 32px;
+    border: 0px;
+    margin-left: 14px;
+}
+
+.Blue-Items {
+    border-radius: 28px;
+    background-color: dodgerblue;
+    width: 32px;
+    height: 32px;
+    border: 0px;
+    margin-left: 14px;
+}
+
+.Green-Items {
+    border-radius: 28px;
+    background-color: green;
+    width: 32px;
+    height: 32px;
+    border: 0px;
+    margin-left: 14px;
+}
+
+.noBorder {
+    border: 0px;
+    width: 100%;
+    height: 128px;
+}
+
+    .noBorder tr {
+        border: 0px;
+    }
+
+    .noBorder td {
+        border: 0px;
+    }

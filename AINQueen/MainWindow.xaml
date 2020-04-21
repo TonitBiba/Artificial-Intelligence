@@ -1,0 +1,22 @@
+﻿<Window x:Class="AINQueen.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AINQueen"
+        mc:Ignorable="d"
+        Title="Blocked N Queens problem" Height="450" Width="800">
+    <Grid>
+        <Label Content="Detyra e 3-të në AI me blocked N Queens" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" Width="780" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontFamily="Times New Roman"/>
+        <Label Content="Numri mbretëreshave" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="txtNumberOfQueens" HorizontalAlignment="Left" Margin="10,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" Height="25" AutomationProperties.ItemType=""/>
+        <Label Content="Algoritmi" HorizontalAlignment="Left" Margin="153,71,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cmbAlgorithm" HorizontalAlignment="Left" Margin="153,97,0,0" VerticalAlignment="Top" Width="139" Height="25">
+            <ComboBoxItem Content="Depth First Search"/>
+            <ComboBoxItem Content="Iterative deeping DFS"/>
+            <ComboBoxItem Content="Backtracking DFS"/>
+        </ComboBox>
+        <Button x:Name="btnFindSolution" Content="Zgjidhe" HorizontalAlignment="Left" Margin="360,97,0,0" VerticalAlignment="Top" Width="117" Click="btnFindSolution_Click" Height="25"/>
+
+    </Grid>
+</Window>

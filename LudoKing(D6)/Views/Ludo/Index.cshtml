@@ -1,0 +1,210 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>MiniMax implemented in solving Ludo King between two players</h1>
+
+<link href="~/css/Ludo.css" rel="stylesheet" />
+
+<table>
+    <tr>
+        <td rowspan="6" colspan="6">
+            <div style="border: 32px solid red;width: 100%;height: 100%">
+                <table class="noBorder">
+                    <tr>
+                        <td>
+                            <div class="Red-Items" />
+                        </td>
+                        <td>
+                            <div class="Red-Items" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="Red-Items" />
+                        </td>
+                        <td>
+                            <div class="Red-Items" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td></td>
+        <td>Arrow</td>
+        <td></td>
+        <td rowspan="6" colspan="6">
+            <div style="border:32px solid green; width:100%; height:100%">
+                <table class="noBorder">
+                    <tr>
+                        <td>
+                            <div class="Green-Items" />
+                        </td>
+                        <td>
+                            <div class="Green-Items" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="Green-Items" />
+                        </td>
+                        <td>
+                            <div class="Green-Items" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="Green"></td>
+        <td class="Green"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="Green"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="Green"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="Green"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="Green"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="Red"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="Red"></td>
+        <td class="Red"></td>
+        <td class="Red"></td>
+        <td class="Red"></td>
+        <td class="Red"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="Yellow"></td>
+        <td class="Yellow"></td>
+        <td class="Yellow"></td>
+        <td class="Yellow"></td>
+        <td class="Yellow"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="Yellow"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan="6" colspan="6">
+            <div style="border:32px solid dodgerblue; width:100%; height:100%">
+                <table class="noBorder">
+                    <tr>
+                        <td>
+                            <div class="Blue-Items" />
+                        </td>
+                        <td>
+                            <div class="Blue-Items" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="Blue-Items" />
+                        </td>
+                        <td>
+                            <div class="Blue-Items" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td></td>
+        <td class="Blue"></td>
+        <td></td>
+        <td rowspan="6" colspan="6">
+            <div style="border:32px solid #ffbf00; width:100%; height:100%">
+                <table class="noBorder">
+                    <tr>
+                        <td>
+                            <div class="Yellow-Items" />
+                        </td>
+                        <td>
+                            <div class="Yellow-Items" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="Yellow-Items" />
+                        </td>
+                        <td>
+                            <div class="Yellow-Items" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="Blue"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="Blue"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="Blue"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="Blue"></td>
+        <td class="Blue"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
