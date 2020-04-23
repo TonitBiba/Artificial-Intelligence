@@ -40,11 +40,11 @@
                         </table>
                     </div>
                 </td>
-                <td></td>
-                <td>
+                <td id="c1"></td>
+                <td id="c2">
                     <i class="fas fa-arrow-down" style="margin-left: 8px; color:green"></i>
                 </td>
-                <td></td>
+                <td id="c3"></td>
                 <td rowspan="6" colspan="6">
                     <div style="border:32px solid green; width:100%; height:100%">
                         <table class="noBorder">
@@ -268,7 +268,8 @@
     $(document).ready(function () {
         var connection = new signalR.HubConnectionBuilder().withUrl("/ludoHub").build();
 
-        connection.on("ReceiveMessage", function (user, message) {
+        connection.on("ReceiveMessage", function (diceVal) {
+            $('.Dice').attr('data-count', diceVal)
             debugger
         });
 

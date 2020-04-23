@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Common;
 
 namespace ArtificialIntelligence
 {
@@ -31,12 +30,12 @@ namespace ArtificialIntelligence
                     if (table[row - i, column - i] == 1)
                         return false;
 
-                if(row+i<NQuens && column - i >= 0)
+                if (row + i < NQuens && column - i >= 0)
                     if (table[row + i, column - i] == 1)
                         return false;
             }
 
-                return true;
+            return true;
         }
 
         public bool SolveProblem(int column)
@@ -49,14 +48,14 @@ namespace ArtificialIntelligence
             }
             for (int row = 0; row < NQuens; row++)
             {
-                if(isSafe(column, row))
+                if (isSafe(column, row))
                 {
                     if (table[row, column] != -1) //Check if cell is blocked
                     {
                         table[row, column] = 1;
                         PlacedQuens++;
                         if (SolveProblem(column + 1))
-                            return true;                        
+                            return true;
                         table[row, column] = 0;
                         PlacedQuens--;
                     }
