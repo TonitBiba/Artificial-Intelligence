@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using LudoKing_D6_.Hubs;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 
@@ -6,190 +8,153 @@ namespace LudoKing_D6_.General
 {
     public class Ludo
     {
+        public IHubContext<LudoHub> _ludoHub { get; set; }
+
         public State tempState { get; set; }
 
-        public Ludo(State state)
+        public Ludo(State state, IHubContext<LudoHub> _ludoHub)
         {
+            this._ludoHub = _ludoHub;
+
             tempState = new State
             {
                 Min = CopyArray(state.Min),
                 Max = CopyArray(state.Max),
                 MaxFinished = state.MaxFinished,
-                MaxPlaced = state.MaxPlaced,
-                MinFinished = state.MinFinished,
-                MiniMaxValue = state.MiniMaxValue,
-                MinPlaced = state.MinPlaced
+                MinFinished = state.MinFinished
             };
         }
 
-        public int[] CopyArray(int[] array)
+        public List<int[]> CopyArray(List<int[]> array)
         {
-            int[] newArray = new int[array.Length];
-            for (int i = 0; i < array.Length; i++)
-                newArray[i] = array[i];
+            List<int[]> newArray = new List<int[]>();
+            foreach (var item in array)
+            {
+                int[] tempArray = new int[item.Length];
+                for (int i = 0; i < item.Length; i++)
+                    tempArray[i] = item[i];
+                newArray.Add(tempArray);
+            }
             return newArray;
         }
 
-        public int MaxValue()
+        public int MaxValue(State maxState)
         {
-            //Check if terminal state
-            if (tempState.MaxFinished == 4 || tempState.MinFinished == 4)
-                return tempState.MaxFinished == 4 ? 1 : -1;
-
-            int maxValue = int.MinValue;
-            int[] possibleDiceVal = new int[6] { 1, 2, 3, 4, 5, 6 };
-            foreach (int dice in possibleDiceVal)
+            try
             {
-                //MAX turn
-                if (tempState.MaxPlaced == 0 && dice == 6)
-                {
-                    tempState.Max[0] = 1;
-                    tempState.MaxPlaced++;
-                }
+                //Check if terminal state
+                if (maxState.MaxFinished == 4 || maxState.MinFinished == 4)
+                    return maxState.MaxFinished == 4 ? 1 : -1;
 
-                else if (tempState.MaxPlaced == 0 && dice != 6)
+                int maxValue = int.MinValue;
+                int[] possibleDiceVal = new int[6] { 1, 2, 3, 4, 5, 6 };
+                foreach (int dice in possibleDiceVal)
                 {
-                    continue;
-                }
-
-                else if (Array.IndexOf(tempState.Max, 1) + dice == 56)
-                {
-                    tempState.MaxPlaced--;
-                    tempState.Max[Array.IndexOf(tempState.Max, 1) + dice] = 0;
-                    tempState.MaxFinished++;
-                    if (tempState.MaxFinished == 4)
-                        return 1;
-                }
-                else
-                {
-                    if (Array.IndexOf(tempState.Max, 1) + dice < 56)
+                    //MAX turn
+                    if (maxState.Max.Count == 0 && dice == 6)
                     {
-                        int indexOfOne = Array.IndexOf(tempState.Max, 1);
-                        tempState.Max[indexOfOne] = 0;
-                        tempState.Max[indexOfOne + dice] = 1;
+                        maxState.Max.Add(new int[57]);
+                        maxState.Max[0][0] = 1;
                     }
+
+                    else if (maxState.Max.Count == 0 && dice != 6)
+                        continue;
+
+                    else
+                    {
+                        foreach (var player in maxState.Max)
+                        {
+                            int indexOfOne = Array.IndexOf(player, 1);
+                            if (indexOfOne > -1)
+                            {
+                                if (indexOfOne + dice < 56)
+                                {
+                                    player[indexOfOne] = 0;
+                                    player[indexOfOne + dice] = 1;
+                                    break;
+                                }
+                                else if (indexOfOne + dice == 56)
+                                {
+                                    maxState.Max.RemoveAt(0);
+                                    maxState.MaxFinished++;
+                                    if (maxState.MaxFinished == 4)
+                                        return 1;
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                maxState.Max.RemoveAt(0);
+                                break;
+                            }
+                        }
+                    }
+                    return Math.Max(maxValue, MinValue(new State { MaxFinished = maxState.MaxFinished, Max = CopyArray(maxState.Max), Min = CopyArray(maxState.Min), MinFinished = maxState.MinFinished }));
                 }
-                return Math.Max(maxValue, MinValue());
+            }catch(Exception ex)
+            {
+
             }
             return 0;
         }
 
-        public int MinValue()
+        public int MinValue(State minState)
         {
-            //Check if terminal state
-            if (tempState.MaxFinished == 4 || tempState.MinFinished == 4)
-                return tempState.MinFinished == 4 ? -1 : 1;
-
-            int minVal = int.MaxValue; //Suppozing that this is infinity for our case. For the worst case this is okay, in other this makes no sence TB.
-            int[] possibleDiceVal = new int[6] { 1, 2, 3, 4, 5, 6 };
-            foreach (var dice in possibleDiceVal)
+            try
             {
-                if (tempState.MinPlaced == 0 && dice == 6)
-                {
-                    tempState.Min[0] = 1;
-                    tempState.MinPlaced++;
-                }
+                //Check if terminal state
+                if (minState.MaxFinished == 4 || minState.MinFinished == 4)
+                    return minState.MinFinished == 4 ? -1 : 1;
 
-                else if (tempState.MinPlaced == 0 && dice != 6)
+                int minVal = int.MaxValue; //Suppozing that this is infinity for our case. For the worst case this is okay, in other this makes no sence TB.
+                int[] possibleDiceVal = new int[6] { 1, 2, 3, 4, 5, 6 };
+                foreach (var dice in possibleDiceVal)
                 {
-                    continue;
-                }
-                else if (Array.IndexOf(tempState.Min, 1) + dice == 56)
-                {
-                    tempState.MinPlaced--;
-                    tempState.Min[Array.IndexOf(tempState.Min, 1) + dice] = 0;
-
-                    tempState.MinFinished++;
-
-                    if (tempState.MinFinished == 4)
-                        return -1;
-                }
-                else
-                {
-                    if (Array.IndexOf(tempState.Min, 1) + dice < 56)
+                    if (minState.Min.Count == 0 && dice == 6)
                     {
-                        int indexOfOne = Array.IndexOf(tempState.Min, 1);
-                        tempState.Min[indexOfOne] = 0;
-                        tempState.Min[indexOfOne + dice] = 1;
+                        minState.Min.Add(new int[57]);
+                        minState.Min[0][0] = 1;
                     }
+
+                    else if (minState.Min.Count == 0 && dice != 6)
+                        continue;
+
+                    else
+                    {
+                        foreach (var player in minState.Min)
+                        {
+                            int indexOfOne = Array.IndexOf(player, 1);
+                            if (indexOfOne > -1)
+                            {
+                                if (indexOfOne + dice < 56)
+                                {
+                                    player[indexOfOne] = 0;
+                                    player[indexOfOne + dice] = 1;
+                                    break;
+                                }
+                                else if (indexOfOne + dice == 56)
+                                {
+                                    minState.Min.RemoveAt(0);
+                                    minState.MinFinished++;
+                                    if (minState.MinFinished == 4)
+                                        return -1;
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                minState.Min.RemoveAt(0);
+                                break;
+                            }
+                        }
+                    }
+                    return Math.Min(minVal, MaxValue(new State { MaxFinished = minState.MaxFinished, MinFinished = minState.MinFinished, Min = CopyArray(minState.Min), Max = CopyArray(minState.Max) }));
                 }
-                return Math.Min(minVal, MaxValue());
+            }catch(Exception ex)
+            {
+                return 0;
             }
             return 0;
-        }
-
-
-        public List<int[]> FindRowColumn(State state, int nCase)
-        {
-            List<int[]> gamePositions = new List<int[]>();
-            if (nCase == 1)
-            {
-                for (int i = 0; i < 4; i++)
-                    for (int j = 0; j < 57; j++)
-                        if (state.Max[i, j] == 1)
-                            gamePositions.Add(new int[] { i, j });
-            }
-            else
-            {
-                for (int k = 0; k < 4; k++)
-                    for (int t = 0; t < 57; t++)
-                        if (state.Min[k, t] == 1)
-                            gamePositions.Add(new int[] { k, t });
-            }
-            return gamePositions;
-        }
-
-
-        public int[] BestMove(State state, int dice, int nCase, int MiniMaxScore)
-        {
-            List<int[]> gamePositionsMax = FindRowColumn(state, 1);
-            List<int[]> gamePositionsMin = FindRowColumn(state, 2);
-            if (nCase == 1)
-            {
-                foreach (var maxPosition in gamePositionsMax)
-                {
-                    if (MiniMaxScore == 1)
-                        return gamePositionsMax[gamePositionsMax.IndexOf(maxPosition)];
-                    else
-                    {
-                        foreach (var minPosition in gamePositionsMin)
-                        {
-                            for (int i = 26; i < 57; i++)
-                            {
-                                if (minPosition[i] == 1 &&  maxPosition[i-26]==1)
-                                {
-                                    state.Min[gamePositionsMin.IndexOf(minPosition), i]=0;
-                                    return gamePositionsMax[gamePositionsMax.IndexOf(maxPosition)];
-                                }
-                            }
-                        }
-                    }
-                }
-                return gamePositionsMax[0];
-            }
-            else
-            {
-                foreach (var minPosition in gamePositionsMin)
-                {
-                    if (MiniMaxScore == -1)
-                        return gamePositionsMin[gamePositionsMin.IndexOf(minPosition)];
-                    else
-                    {
-                        foreach (var maxPosition in gamePositionsMax)
-                        {
-                            for (int i = 0; i < 27; i++)
-                            {
-                                if (maxPosition[i] == 1 && minPosition[i + 26] == 1)
-                                {
-                                    state.Max[gamePositionsMax.IndexOf(maxPosition), i] = 0;
-                                    return gamePositionsMin[gamePositionsMin.IndexOf(minPosition)];
-                                }
-                            }
-                        }
-                    }
-                }
-                return gamePositionsMin[0];
-            }
         }
     }
 }
