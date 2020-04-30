@@ -1,9 +1,8 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-}
-
-<h1>MiniMax implemented in solving Ludo King between two players</h1>
+}    
+<h1>Implementimi i algoritmit MiniMax në zhvillimin e lojës Cic-Mic</h1>
 <link href="~/lib/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet" />
 <link href="~/css/Ludo.css" rel="stylesheet" />
 <div class="row">
@@ -83,7 +82,6 @@
             </tr>
             <tr>
                 <td class="G47 B21">
-                    <i class="far fa-star fa-lg" style="margin-left: 3px;"></i>
                 </td>
                 <td class="Green G52"></td>
                 <td class="G1 B27"></td>
@@ -115,7 +113,6 @@
                 <td class="G6 B32"></td>
                 <td class="G7 B33"></td>
                 <td class="G8 B34">
-                    <i class="far fa-star fa-lg" style="margin-left: 3px;"></i>
                 </td>
                 <td class="G9 B35"></td>
                 <td class="G10 B36"></td>
@@ -142,7 +139,6 @@
                 <td class="G36 B10"></td>
                 <td class="G35 B9"></td>
                 <td class="G34 B8">
-                    <i class="far fa-star fa-lg" style="margin-left: 3px;"></i>
                 </td>
                 <td class="G33 B7"></td>
                 <td class="G32 B6"></td>
@@ -232,9 +228,7 @@
             <tr>
                 <td class="G27 B1"></td>
                 <td class="Blue B52"></td>
-                <td class="G21 B47">
-                    <i class="far fa-star fa-lg" style="margin-left: 3px;"></i>
-                </td>
+                <td class="G21 B47"></td>
             </tr>
             <tr>
                 <td class="Blue B0 G26"></td>
@@ -274,8 +268,9 @@
             <span></span>
         </div>
 
+        <label for="speedPlay">Shpejtesia e ekzekutimit ne milisekonda</label>
         <input type="number" class="form-control" id="speedPlay"/>
-        <button class="btn btn-primary" id="btnPlay">Play</button>
+        <button class="btn btn-primary" id="btnPlay">Luaj</button>
     </div>
 </div>
 <script>
